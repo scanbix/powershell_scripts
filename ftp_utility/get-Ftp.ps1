@@ -154,5 +154,5 @@ function Open-Sftp {
 
 # The list below follows Excel sheet connection order for PowerCenter
 
-# Open-Ftp -Alias 'FTP_NBP' -Protocol 'FTP' -HostName 'xyz.com' -UserName 'aaa' -Password 'bb' -RemotePath '/Download/IndexClassification/Klassifiseringer_20200428.txt'
-# Open-Sftp -Alias 'FTP_NBP' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jNy0/Hg++KmKJxsxe+Y6CMOG5jy5NXOd9Tqp64gwt44=' -Password 'aa' -RemotePath '/Download/IndexClassification/Klassifiseringer_20200428.txt'
+# Open-Ftp -Alias 'FTP_NBP' -Protocol 'FTP' -HostName 'xyz.com' -UserName 'aaa' -Password 'bb' -RemotePath '/Download/zyx/xyz.txt'
+# Open-Sftp -Alias 'FTP_NBP' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jxyz' -Password 'aa' -RemotePath '/Download/xyz/xyz.txt'
