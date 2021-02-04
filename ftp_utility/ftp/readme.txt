@@ -1,0 +1,1 @@
+Default download folder for FTP files.
