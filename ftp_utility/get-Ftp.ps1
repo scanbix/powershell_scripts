@@ -152,7 +152,74 @@ function Open-Sftp {
     }
 }
 
+function Open-SftpUsingKey {
+    [CmdletBinding()]
+    param (
+        [Parameter()]
+        [string]
+        $Alias,
+        [Parameter()]
+        [string]
+        $Protocol,
+        [Parameter()]
+        [string]
+        $HostName,
+        [Parameter()]
+        [string]
+        $UserName,
+        [Parameter()]
+        [string]
+        $SshHostKeyFingerprint,
+        [Parameter()]
+        [string]
+        $PrivateKeyPath,
+        [Parameter()]
+        [string]
+        $Passphrase,
+        [Parameter()]
+        [string]
+        $RemotePath,
+        [Parameter()]
+        [string]
+        $LocalPath = '.\ftp\'
+    )
+    
+    # Setup session options
+    $sessionOptions = New-Object WinSCP.SessionOptions -Property @{
+        Protocol = [WinSCP.Protocol]::Sftp
+        HostName = $HostName
+        UserName = $UserName
+        SshHostKeyFingerprint = $SshHostKeyFingerprint
+        PrivateKeyPassphrase = $Passphrase
+        SshPrivateKeyPath = $PrivateKeyPath
+    }
+
+    $session = New-Object WinSCP.Session
+
+    try
+    {
+        Write-Host $Alias - $Protocol : $HostName : $UserName -ForegroundColor DarkGreen
+        
+        # Connect
+        $session.Open($sessionOptions)
+
+        # Download files
+        $session.GetFiles($RemotePath, $LocalPath).Check()
+    }
+    catch
+    {
+        Write-Host $Alias - $Protocol : $HostName : $UserName ($_) -ForegroundColor DarkRed
+    }
+    finally
+    {
+        # Disconnect, clean up
+        $session.Dispose()
+    }
+}
+
 # The list below follows Excel sheet connection order for PowerCenter
 
 # Open-Ftp -Alias 'FTP_NBP' -Protocol 'FTP' -HostName 'xyz.com' -UserName 'aaa' -Password 'bb' -RemotePath '/Download/zyx/xyz.txt'
 # Open-Sftp -Alias 'FTP_NBP' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jxyz' -Password 'aa' -RemotePath '/Download/xyz/xyz.txt'
+# Open-SftpUsingKey -Alias 'SAM_TEST_FTP_test' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jxyz' -PrivateKeyPath 'C:\some_key.pk' -Passphrase 'aaa' -RemotePath '/Download/xyz/xyz.txt'
+
