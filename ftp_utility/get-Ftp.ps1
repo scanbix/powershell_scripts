@@ -29,7 +29,7 @@ function Get_PreviousWeekDate {
     
 }
 
-function Open-Ftp {
+function Get-FtpFile {
     [CmdletBinding()]
     param (
         [Parameter()]
@@ -90,7 +90,7 @@ function Open-Ftp {
     }
 }
 
-function Open-Sftp {
+function Get-SftpFile {
     [CmdletBinding()]
     param (
         [Parameter()]
@@ -152,7 +152,7 @@ function Open-Sftp {
     }
 }
 
-function Open-SftpUsingKey {
+function Get-SftpFileUsingKey {
     [CmdletBinding()]
     param (
         [Parameter()]
@@ -219,7 +219,7 @@ function Open-SftpUsingKey {
 
 # The list below follows Excel sheet connection order for PowerCenter
 
-# Open-Ftp -Alias 'FTP_NBP' -Protocol 'FTP' -HostName 'xyz.com' -UserName 'aaa' -Password 'bb' -RemotePath '/Download/zyx/xyz.txt'
-# Open-Sftp -Alias 'FTP_NBP' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jxyz' -Password 'aa' -RemotePath '/Download/xyz/xyz.txt'
-# Open-SftpUsingKey -Alias 'SAM_TEST_FTP_test' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jxyz' -PrivateKeyPath 'C:\some_key.pk' -Passphrase 'aaa' -RemotePath '/Download/xyz/xyz.txt'
+# Get-FtpFile -Alias 'FTP_NBP' -Protocol 'FTP' -HostName 'xyz.com' -UserName 'aaa' -Password 'bb' -RemotePath '/Download/zyx/xyz.txt'
+# Get-SftpFile -Alias 'FTP_NBP' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jxyz' -Password 'aa' -RemotePath '/Download/xyz/xyz.txt'
+# Get-SftpFileUsingKey -Alias 'SAM_TEST_FTP_test' -Protocol 'SFTP' -HostName 'xyz.com' -UserName 'aaa' -SshHostKeyFingerprint 'ssh-rsa 1024 jxyz' -PrivateKeyPath 'C:\some_key.pk' -Passphrase 'aaa' -RemotePath '/Download/xyz/xyz.txt'
 
