@@ -52,7 +52,7 @@ function Get-FtpFile {
         $RemotePath,
         [Parameter()]
         [string]
-        $LocalPath = '.\ftp\'
+        $LocalPath = '.\download\'
     )
 
 
@@ -116,7 +116,7 @@ function Get-SftpFile {
         $RemotePath,
         [Parameter()]
         [string]
-        $LocalPath = '.\ftp\'
+        $LocalPath = '.\download\'
     )
 
 
@@ -181,7 +181,7 @@ function Get-SftpFileUsingKey {
         $RemotePath,
         [Parameter()]
         [string]
-        $LocalPath = '.\ftp\'
+        $LocalPath = '.\download\'
     )
     
     # Setup session options
